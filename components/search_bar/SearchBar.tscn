@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqc2wa8ilqwt0"]
+
+[ext_resource type="StyleBox" uid="uid://davy1t8j8oqig" path="res://pages/chats/search_bar_inactive.tres" id="1_4we6c"]
+[ext_resource type="Texture2D" uid="uid://3e2ktan1orro" path="res://assets/icons/search_gray.svg" id="2_exxlv"]
+[ext_resource type="Script" path="res://components/search_bar/SearchBar.gd" id="3_vfd5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cf1u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4sl0"]
+bg_color = Color(0, 0.658824, 0.517647, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqlhu"]
+bg_color = Color(0.615686, 0.615686, 0.615686, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="SearchBar" type="LineEdit"]
+offset_right = 387.0
+offset_bottom = 39.0
+theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
+theme_override_styles/normal = ExtResource("1_4we6c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2cf1u")
+right_icon = ExtResource("2_exxlv")
+script = ExtResource("3_vfd5g")
+
+[node name="Active" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4sl0")
+
+[node name="InActive" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqlhu")

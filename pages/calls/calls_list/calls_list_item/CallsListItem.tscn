@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://db677dypua7p2"]
+
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="1_ncuh6"]
+[ext_resource type="PackedScene" uid="uid://82luo3c72are" path="res://components/avatar/Avatar.tscn" id="2_yygdl"]
+[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="3_ym478"]
+[ext_resource type="Texture2D" uid="uid://d1k1o0ubs7cwl" path="res://assets/icons/missed_call.svg" id="4_30ktl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcwqv"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CallsListItem" type="Button"]
+custom_minimum_size = Vector2(0, 85)
+offset_right = 450.0
+offset_bottom = 85.0
+theme_override_styles/normal = ExtResource("1_ncuh6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rcwqv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rcwqv")
+theme_override_styles/disabled = ExtResource("1_ncuh6")
+theme_override_styles/focus = ExtResource("1_ncuh6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Avatar" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_yygdl")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_ym478")
+text = "Jane Doe"
+vertical_alignment = 2
+
+[node name="Time" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+text = "11:00 PM"
+vertical_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 0.6, 0.643137, 1)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("4_30ktl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Contents" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Missed"
+text_overrun_behavior = 3

@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpsg1g301xtea"]
+
+[ext_resource type="Script" path="res://components/title_bar/TitleBar.gd" id="1_30q8m"]
+[ext_resource type="Texture2D" uid="uid://kt0wrphul1rx" path="res://assets/icons/whatsupgodot-icon.svg" id="2_nfljd"]
+[ext_resource type="PackedScene" uid="uid://co32vh4y57qtm" path="res://components/title_bar/TitleBarButtonInnerButton.tscn" id="2_tdcoi"]
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="3_6y4vd"]
+[ext_resource type="Script" path="res://components/title_bar/MoveWindow.gd" id="3_hp1j6"]
+[ext_resource type="Texture2D" uid="uid://c0xe1u7dqyuih" path="res://assets/icons/minus.svg" id="3_u3f0q"]
+[ext_resource type="Texture2D" uid="uid://cdabcykwt7cwg" path="res://assets/icons/maximize.svg" id="4_mvuyy"]
+[ext_resource type="Texture2D" uid="uid://dtaggq1i4a78b" path="res://assets/icons/x-mark.svg" id="5_bcrpi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hgnu"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25jjo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n63b8"]
+bg_color = Color(0.768627, 0.168627, 0.109804, 1)
+
+[node name="TitleBar" type="PanelContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2hgnu")
+script = ExtResource("1_30q8m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_nfljd")
+expand_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "WhatsupGodot"
+
+[node name="MoveWindow" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = ExtResource("3_6y4vd")
+script = ExtResource("3_hp1j6")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="MinimizeBtn" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_25jjo")
+
+[node name="Button" parent="MarginContainer/HBoxContainer/HBoxContainer2/MinimizeBtn" instance=ExtResource("2_tdcoi")]
+layout_mode = 2
+tooltip_text = "Minimize"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2/MinimizeBtn"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("3_u3f0q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MiddleBtn" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_25jjo")
+
+[node name="Button" parent="MarginContainer/HBoxContainer/HBoxContainer2/MiddleBtn" instance=ExtResource("2_tdcoi")]
+layout_mode = 2
+tooltip_text = "Maximize"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2/MiddleBtn"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("4_mvuyy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseBtn" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_25jjo")
+
+[node name="Button" parent="MarginContainer/HBoxContainer/HBoxContainer2/CloseBtn" instance=ExtResource("2_tdcoi")]
+layout_mode = 2
+tooltip_text = "Close"
+theme_override_styles/hover = SubResource("StyleBoxFlat_n63b8")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HBoxContainer2/CloseBtn"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("5_bcrpi")
+expand_mode = 1
+stretch_mode = 5

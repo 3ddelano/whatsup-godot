@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtey3mf20erj"]
+
+[ext_resource type="PackedScene" uid="uid://dpsg1g301xtea" path="res://components/title_bar/TitleBar.tscn" id="1_gvo1p"]
+[ext_resource type="Script" path="res://pages/app/App.gd" id="1_n48ql"]
+[ext_resource type="PackedScene" uid="uid://rcuv55xr08du" path="res://components/side_menu/SideMenu.tscn" id="3_4giqx"]
+[ext_resource type="PackedScene" uid="uid://bgc854qs0nim6" path="res://pages/chats/Chats.tscn" id="4_3tdbr"]
+[ext_resource type="Script" path="res://pages/app/PageManager.gd" id="4_cruoc"]
+[ext_resource type="PackedScene" uid="uid://bgr7d4m7ginlw" path="res://pages/calls/Calls.tscn" id="5_ptgta"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwhtd"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_bottom_right = 12
+
+[node name="App" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n48ql")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+
+[node name="TitleBar" parent="VBoxContainer" instance=ExtResource("1_gvo1p")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+
+[node name="SideMenu" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_4giqx")]
+layout_mode = 2
+
+[node name="PageManager" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwhtd")
+script = ExtResource("4_cruoc")
+
+[node name="Chats" parent="VBoxContainer/HBoxContainer/PageManager" instance=ExtResource("4_3tdbr")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Calls" parent="VBoxContainer/HBoxContainer/PageManager" instance=ExtResource("5_ptgta")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2

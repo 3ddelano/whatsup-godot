@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbvbfwbb1xsns"]
+
+[ext_resource type="Texture2D" uid="uid://dvcf1yx3iogts" path="res://assets/icons/whatsupgodot-gray.svg" id="1_5byfw"]
+[ext_resource type="FontFile" uid="uid://cfhnq78x8vcmq" path="res://assets/fonts/Roboto/Roboto-Regular.ttf" id="2_kxuam"]
+[ext_resource type="Texture2D" uid="uid://gykyvunygdod" path="res://assets/icons/lock.svg" id="3_4ql5p"]
+
+[node name="Landing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("1_5byfw")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kxuam")
+theme_override_font_sizes/font_size = 24
+text = "WhatsupGodot for Windows"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.611765, 0.611765, 1)
+text = "Send and receive messages without keeping your phone online.
+Use WhatsupGodot on up to 4 linked devices and 1 phone at the same time."
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 60
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color(0.458824, 0.458824, 0.458824, 1)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("3_4ql5p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.458824, 0.458824, 0.458824, 1)
+text = "End-to-end encrypted"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cii7bqbvywolw"]
+
+[ext_resource type="Script" path="res://components/selected_button_indicator/SelectedButtonIndicator.gd" id="1_6pxlf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8hrr"]
+bg_color = Color(0, 0.658824, 0.517647, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="SelectedButtonIndicator" type="Node2D"]
+script = ExtResource("1_6pxlf")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 4.0
+offset_bottom = 20.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s8hrr")
+
+[node name="Top" type="Node2D" parent="."]
+
+[node name="Bottom" type="Node2D" parent="."]

@@ -1,0 +1,334 @@
+[gd_scene load_steps=19 format=3 uid="uid://dn6slpvc7fe7p"]
+
+[ext_resource type="PackedScene" uid="uid://82luo3c72are" path="res://components/avatar/Avatar.tscn" id="1_rmo5k"]
+[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="2_8rwvf"]
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="3_d32gs"]
+[ext_resource type="Texture2D" uid="uid://dd7jgyl31a7gp" path="res://assets/icons/video.svg" id="4_1ejr1"]
+[ext_resource type="Texture2D" uid="uid://cwna7ge6rq01t" path="res://assets/icons/phone.svg" id="5_442wu"]
+[ext_resource type="Texture2D" uid="uid://b6luuhgjnygb0" path="res://assets/icons/search.svg" id="6_imo0o"]
+[ext_resource type="Texture2D" uid="uid://blfvhkyi2h0xk" path="res://assets/patterns/tic-tac-toe.svg" id="7_5kfxl"]
+[ext_resource type="Texture2D" uid="uid://boymwdxduxhdc" path="res://assets/icons/emoji.svg" id="8_olmkv"]
+[ext_resource type="Texture2D" uid="uid://dkfaki7nr1nmm" path="res://assets/icons/attach.svg" id="9_pdniu"]
+[ext_resource type="Texture2D" uid="uid://cimxhe2812ynt" path="res://assets/icons/microphone.svg" id="10_iht60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fsay"]
+draw_center = false
+border_width_bottom = 1
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ruq"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7is0x"]
+color = Color(0.321569, 0.321569, 0.321569, 1)
+vertical = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gka17"]
+texture = ExtResource("7_5kfxl")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv6dw"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_top = 1
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwhgs"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bytpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a86p"]
+
+[node name="ChatMessages" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Header" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3fsay")
+
+[node name="MarginContainer" type="MarginContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Contact" type="HBoxContainer" parent="Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Avatar" parent="Header/MarginContainer/HBoxContainer/Contact" instance=ExtResource("1_rmo5k")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/MarginContainer/HBoxContainer/Contact"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Name" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_8rwvf")
+text = "Jane Doe"
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+layout_mode = 2
+text = "select for contact info"
+
+[node name="PersonChatBtn" type="HBoxContainer" parent="Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VideoCallBtn" type="Button" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+tooltip_text = "Video Call"
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn/VideoCallBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1ejr1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioCallBtn" type="Button" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+tooltip_text = "Audio Call"
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn/AudioCallBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_442wu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator" type="VSeparator" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_7is0x")
+
+[node name="SearchWithinChatBtn" type="Button" parent="Header/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+tooltip_text = "Search Within Chat"
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="Header/MarginContainer/HBoxContainer/SearchWithinChatBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_imo0o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_gka17")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv6dw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EmojiPickerBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer/EmojiPickerBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_olmkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AttachBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer/AttachBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_pdniu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MessageInput" type="LineEdit" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+theme_override_styles/read_only = ExtResource("3_d32gs")
+placeholder_text = "Type a message"
+
+[node name="MessageInputMultiline" type="TextEdit" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
+theme_override_constants/line_spacing = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hwhgs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bytpr")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3a86p")
+placeholder_text = "Type a message"
+wrap_mode = 1
+scroll_smooth = true
+scroll_fit_content_height = true
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/MessageInputMultiline"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Type a message"
+
+[node name="AudioBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("3_d32gs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("3_d32gs")
+theme_override_styles/focus = ExtResource("3_d32gs")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/AudioBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_iht60")
+expand_mode = 1
+stretch_mode = 5

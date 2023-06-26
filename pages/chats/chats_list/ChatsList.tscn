@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf38jffnq5nby"]
+
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="1_7kyie"]
+[ext_resource type="Script" path="res://pages/chats/chats_list/ChatsList.gd" id="1_a8jcg"]
+[ext_resource type="Texture2D" uid="uid://dbrgtdxefpj6h" path="res://assets/icons/archive.svg" id="2_fuve4"]
+[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="3_81r5d"]
+[ext_resource type="PackedScene" uid="uid://bvnio01hcmstw" path="res://pages/chats/chats_list/chats_list_item/ChatsListItem.tscn" id="4_44422"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhoen"]
+bg_color = Color(0.439216, 0.439216, 0.439216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs5dr"]
+content_margin_left = 2.0
+content_margin_top = 6.0
+content_margin_right = 2.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Theme" id="Theme_exeyk"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_qhoen")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_qhoen")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_qhoen")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_xs5dr")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_xs5dr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mk8f"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_u2yih"]
+
+[node name="ChatsList" type="ScrollContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 450.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_exeyk")
+horizontal_scroll_mode = 0
+script = ExtResource("1_a8jcg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ArchivedBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("1_7kyie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mk8f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7mk8f")
+theme_override_styles/disabled = ExtResource("1_7kyie")
+theme_override_styles/focus = ExtResource("1_7kyie")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ArchivedBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ArchivedBtn/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ArchivedBtn/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_fuve4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ArchivedBtn/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_81r5d")
+text = "Archived"
+
+[node name="ChatsListItems" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChatListItem" parent="MarginContainer/VBoxContainer/ChatsListItems" instance=ExtResource("4_44422")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_u2yih")

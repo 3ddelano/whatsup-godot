@@ -1,0 +1,156 @@
+[gd_scene load_steps=14 format=3 uid="uid://bgc854qs0nim6"]
+
+[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="1_542sc"]
+[ext_resource type="Script" path="res://pages/chats/Chats.gd" id="1_hcs84"]
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="2_4fs3u"]
+[ext_resource type="Texture2D" uid="uid://cejm14huo1u62" path="res://assets/icons/pencil_square.svg" id="3_63vkp"]
+[ext_resource type="Texture2D" uid="uid://6rr4xuo5lt0w" path="res://assets/icons/horizontal_dots.svg" id="4_xpdgg"]
+[ext_resource type="PackedScene" uid="uid://bqc2wa8ilqwt0" path="res://components/search_bar/SearchBar.tscn" id="5_13duw"]
+[ext_resource type="PackedScene" uid="uid://bf38jffnq5nby" path="res://pages/chats/chats_list/ChatsList.tscn" id="6_ferkv"]
+[ext_resource type="PackedScene" uid="uid://dn6slpvc7fe7p" path="res://pages/chats/chat_messages/ChatMessages.tscn" id="7_hexhu"]
+[ext_resource type="PackedScene" uid="uid://dbvbfwbb1xsns" path="res://pages/chats/ChatsLanding.tscn" id="8_v66iw"]
+[ext_resource type="Script" path="res://pages/chats/chat_messages/ChatMessages.gd" id="9_nyn1t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n5cu"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slmyt"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enjs6"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_top = 1
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="Chats" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_hcs84")
+
+[node name="Side" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3n5cu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Side"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Side/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Side/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="Side/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_542sc")
+theme_override_font_sizes/font_size = 24
+text = "Chats"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="NewChatBtn" type="Button" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 50)
+layout_mode = 2
+tooltip_text = "New Chat"
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("2_4fs3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_slmyt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slmyt")
+theme_override_styles/disabled = ExtResource("2_4fs3u")
+theme_override_styles/focus = ExtResource("2_4fs3u")
+
+[node name="TextureRect" type="TextureRect" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/NewChatBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_63vkp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoreBtn" type="Button" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("2_4fs3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_slmyt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slmyt")
+theme_override_styles/disabled = ExtResource("2_4fs3u")
+theme_override_styles/focus = ExtResource("2_4fs3u")
+
+[node name="TextureRect" type="TextureRect" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header/HBoxContainer/MoreBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xpdgg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Search" parent="Side/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_13duw")]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Search or start a new chat"
+
+[node name="ChatsList" parent="Side/VBoxContainer" instance=ExtResource("6_ferkv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MainContent" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_enjs6")
+
+[node name="ChatMessages" parent="MainContent" instance=ExtResource("7_hexhu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("9_nyn1t")
+
+[node name="Landing" parent="MainContent" instance=ExtResource("8_v66iw")]
+unique_name_in_owner = true
+layout_mode = 2
