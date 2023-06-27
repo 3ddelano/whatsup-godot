@@ -6,6 +6,7 @@ extends Button
 @onready var _name = %Name
 @onready var _time = %Time
 @onready var _contents = %Contents
+@onready var _msg_delivery_indicator = %MessageDeliveryIndicator
 
 
 var data: ContactData:
@@ -20,8 +21,13 @@ func _build_ui():
 
 	_time.text = ""
 	_contents.text = ""
+	_msg_delivery_indicator.visible = false
+
 	var last_msg: MessageData = data.get_last_msg()
 	if last_msg:
-		_time.text = TimeUtils.unix_to_time_str(last_msg.delivered_at)
+		_time.text = TimeUtils.unix_to_local_time_str(last_msg.delivered_at)
 		_contents.text = last_msg.content
-	_time.text = TimeUtils.unix_to_time_str(Time.get_unix_time_from_system())
+
+		if last_msg.sent_by_me:
+			_msg_delivery_indicator.data = last_msg
+			_msg_delivery_indicator.visible = true

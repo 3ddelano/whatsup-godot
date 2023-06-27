@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0lrk05ecisgr"]
+
+[ext_resource type="Texture2D" uid="uid://gagg11aryj4g" path="res://assets/icons/message_triangle.svg" id="1_bimpt"]
+[ext_resource type="Script" path="res://pages/chats/chat_messages/message/Message.gd" id="1_o370x"]
+[ext_resource type="PackedScene" uid="uid://dbuhnupiuriej" path="res://components/message_delivery_indicator/MessageDeliveryIndicator.tscn" id="2_0xk78"]
+[ext_resource type="StyleBox" uid="uid://vge6jnx62bo6" path="res://pages/chats/chat_messages/message/message_received_stylebox.tres" id="2_g3dmn"]
+
+[node name="Message" type="Container"]
+offset_right = 82.0
+offset_bottom = 119.0
+script = ExtResource("1_o370x")
+max_size = Vector2(740, -1)
+vertical_align = 0
+horizontal_align = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("2_g3dmn")
+
+[node name="Control" type="Control" parent="PanelContainer"]
+show_behind_parent = true
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="MessageLeftTriangle" type="TextureRect" parent="PanelContainer/Control"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.203922, 0.203922, 0.203922, 1)
+layout_mode = 0
+offset_left = -8.0
+offset_right = 9.0
+offset_bottom = 12.0
+texture = ExtResource("1_bimpt")
+
+[node name="MessageRightTriangle" type="TextureRect" parent="PanelContainer/Control"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.0117647, 0.364706, 0.301961, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 8.0
+offset_right = 25.0
+offset_bottom = 12.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+texture = ExtResource("1_bimpt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+
+[node name="Content" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hello this is some text"
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Time" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.529412, 0.529412, 0.529412, 1)
+theme_override_font_sizes/font_size = 12
+text = "10:15 AM"
+
+[node name="MessageDeliveryIndicator" parent="PanelContainer/VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("2_0xk78")]
+unique_name_in_owner = true
+layout_mode = 2

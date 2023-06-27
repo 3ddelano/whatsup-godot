@@ -11,13 +11,11 @@ var data: ChatsData
 func _ready() -> void:
 	data = Store.app_data.chats_data
 
-	data.changed.connect(_build_ui)
+	if not data.changed.is_connected(_build_ui): data.changed.connect(_build_ui)
 	_build_ui()
 
 
 func _build_ui():
-	print("updating chats list ui")
-
 	for child in _chats_list_items.get_children():
 		child.queue_free()
 

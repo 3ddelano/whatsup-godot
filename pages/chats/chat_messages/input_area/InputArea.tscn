@@ -1,0 +1,197 @@
+[gd_scene load_steps=12 format=3 uid="uid://bm8vhw76hb572"]
+
+[ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="1_ci0hg"]
+[ext_resource type="Script" path="res://pages/chats/chat_messages/input_area/InputArea.gd" id="1_s86oa"]
+[ext_resource type="Texture2D" uid="uid://boymwdxduxhdc" path="res://assets/icons/emoji.svg" id="2_ry50g"]
+[ext_resource type="Texture2D" uid="uid://dkfaki7nr1nmm" path="res://assets/icons/attach.svg" id="3_24th7"]
+[ext_resource type="Texture2D" uid="uid://cimxhe2812ynt" path="res://assets/icons/microphone.svg" id="4_r1ejm"]
+[ext_resource type="Texture2D" uid="uid://cl55hpfek3wwc" path="res://assets/icons/send.svg" id="5_nj82t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv6dw"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_top = 1
+border_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6ruq"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwhgs"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bytpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a86p"]
+
+[node name="InputArea" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv6dw")
+script = ExtResource("1_s86oa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EmojiPickerBtn" type="Button" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("1_ci0hg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("1_ci0hg")
+theme_override_styles/focus = ExtResource("1_ci0hg")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer/EmojiPickerBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ry50g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AttachBtn" type="Button" parent="HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("1_ci0hg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("1_ci0hg")
+theme_override_styles/focus = ExtResource("1_ci0hg")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer/AttachBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_24th7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MessageInput" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
+theme_override_styles/normal = ExtResource("1_ci0hg")
+theme_override_styles/focus = ExtResource("1_ci0hg")
+theme_override_styles/read_only = ExtResource("1_ci0hg")
+placeholder_text = "Type a message"
+
+[node name="MessageInputMultiline" type="TextEdit" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
+theme_override_constants/line_spacing = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hwhgs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bytpr")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3a86p")
+placeholder_text = "Type a message"
+wrap_mode = 1
+scroll_smooth = true
+scroll_fit_content_height = true
+
+[node name="Label" type="Label" parent="HBoxContainer/MessageInputMultiline"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Type a message"
+
+[node name="AudioBtn" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("1_ci0hg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("1_ci0hg")
+theme_override_styles/focus = ExtResource("1_ci0hg")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/AudioBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_r1ejm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SendBtn" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("1_ci0hg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
+theme_override_styles/disabled = ExtResource("1_ci0hg")
+theme_override_styles/focus = ExtResource("1_ci0hg")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/SendBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_nj82t")
+expand_mode = 1
+stretch_mode = 5

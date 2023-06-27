@@ -13,5 +13,6 @@ func _ready() -> void:
 	Store.chats_list_item_selected.connect(_on_chats_list_item_selected)
 
 
-func _on_chats_list_item_selected(chats_list_item: ChatsListItem):
-	print(chats_list_item)
+func _on_chats_list_item_selected(_chats_list_item: ChatsListItem):
+	landing.visible = false
+	chat_messages.visible = true

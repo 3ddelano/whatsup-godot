@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgc854qs0nim6"]
+[gd_scene load_steps=13 format=3 uid="uid://bgc854qs0nim6"]
 
 [ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="1_542sc"]
 [ext_resource type="Script" path="res://pages/chats/Chats.gd" id="1_hcs84"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bf38jffnq5nby" path="res://pages/chats/chats_list/ChatsList.tscn" id="6_ferkv"]
 [ext_resource type="PackedScene" uid="uid://dn6slpvc7fe7p" path="res://pages/chats/chat_messages/ChatMessages.tscn" id="7_hexhu"]
 [ext_resource type="PackedScene" uid="uid://dbvbfwbb1xsns" path="res://pages/chats/ChatsLanding.tscn" id="8_v66iw"]
-[ext_resource type="Script" path="res://pages/chats/chat_messages/ChatMessages.gd" id="9_nyn1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n5cu"]
 content_margin_left = 16.0
@@ -149,7 +148,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_enjs6")
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-script = ExtResource("9_nyn1t")
 
 [node name="Landing" parent="MainContent" instance=ExtResource("8_v66iw")]
 unique_name_in_owner = true

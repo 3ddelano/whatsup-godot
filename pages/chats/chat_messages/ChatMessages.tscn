@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dn6slpvc7fe7p"]
+[gd_scene load_steps=18 format=3 uid="uid://dn6slpvc7fe7p"]
 
+[ext_resource type="Script" path="res://pages/chats/chat_messages/ChatMessages.gd" id="1_moulp"]
 [ext_resource type="PackedScene" uid="uid://82luo3c72are" path="res://components/avatar/Avatar.tscn" id="1_rmo5k"]
 [ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="2_8rwvf"]
 [ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="3_d32gs"]
@@ -7,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cwna7ge6rq01t" path="res://assets/icons/phone.svg" id="5_442wu"]
 [ext_resource type="Texture2D" uid="uid://b6luuhgjnygb0" path="res://assets/icons/search.svg" id="6_imo0o"]
 [ext_resource type="Texture2D" uid="uid://blfvhkyi2h0xk" path="res://assets/patterns/tic-tac-toe.svg" id="7_5kfxl"]
-[ext_resource type="Texture2D" uid="uid://boymwdxduxhdc" path="res://assets/icons/emoji.svg" id="8_olmkv"]
-[ext_resource type="Texture2D" uid="uid://dkfaki7nr1nmm" path="res://assets/icons/attach.svg" id="9_pdniu"]
-[ext_resource type="Texture2D" uid="uid://cimxhe2812ynt" path="res://assets/icons/microphone.svg" id="10_iht60"]
+[ext_resource type="Theme" uid="uid://c2ke1g0gq6u4r" path="res://assets/styles/scroll_bar.tres" id="9_4fgrk"]
+[ext_resource type="PackedScene" uid="uid://d0lrk05ecisgr" path="res://pages/chats/chat_messages/message/Message.tscn" id="9_abb6j"]
+[ext_resource type="Texture2D" uid="uid://gykyvunygdod" path="res://assets/icons/lock.svg" id="10_1v77x"]
+[ext_resource type="PackedScene" uid="uid://bm8vhw76hb572" path="res://pages/chats/chat_messages/input_area/InputArea.tscn" id="12_t3hjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fsay"]
 draw_center = false
@@ -32,21 +34,16 @@ texture = ExtResource("7_5kfxl")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv6dw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqvln"]
 content_margin_left = 12.0
-content_margin_top = 6.0
+content_margin_top = 10.0
 content_margin_right = 12.0
-content_margin_bottom = 6.0
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
-border_width_top = 1
-border_color = Color(0.109804, 0.109804, 0.109804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwhgs"]
-bg_color = Color(0.152941, 0.152941, 0.152941, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bytpr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a86p"]
+content_margin_bottom = 10.0
+bg_color = Color(0.529412, 0.486275, 0.403922, 0.694118)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ChatMessages" type="VBoxContainer"]
 anchors_preset = 15
@@ -55,6 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
+script = ExtResource("1_moulp")
 
 [node name="Header" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -64,7 +62,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3fsay")
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Header/MarginContainer"]
@@ -76,7 +74,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="Avatar" parent="Header/MarginContainer/HBoxContainer/Contact" instance=ExtResource("1_rmo5k")]
+[node name="ContactAvatar" parent="Header/MarginContainer/HBoxContainer/Contact" instance=ExtResource("1_rmo5k")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Header/MarginContainer/HBoxContainer/Contact"]
@@ -84,14 +84,16 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Name" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+[node name="ContactName" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_8rwvf")
 text = "Jane Doe"
 vertical_alignment = 2
 
-[node name="Label" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+[node name="ContactSubtitle" type="Label" parent="Header/MarginContainer/HBoxContainer/Contact/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "select for contact info"
 
@@ -100,7 +102,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="VideoCallBtn" type="Button" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn"]
-custom_minimum_size = Vector2(70, 50)
+custom_minimum_size = Vector2(64, 50)
 layout_mode = 2
 tooltip_text = "Video Call"
 mouse_default_cursor_shape = 2
@@ -127,7 +129,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="AudioCallBtn" type="Button" parent="Header/MarginContainer/HBoxContainer/PersonChatBtn"]
-custom_minimum_size = Vector2(70, 50)
+custom_minimum_size = Vector2(64, 50)
 layout_mode = 2
 tooltip_text = "Audio Call"
 mouse_default_cursor_shape = 2
@@ -160,7 +162,7 @@ size_flags_vertical = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_7is0x")
 
 [node name="SearchWithinChatBtn" type="Button" parent="Header/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 50)
+custom_minimum_size = Vector2(64, 50)
 layout_mode = 2
 tooltip_text = "Search Within Chat"
 mouse_default_cursor_shape = 2
@@ -176,10 +178,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_imo0o")
@@ -195,140 +197,68 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_gka17")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+[node name="MessagesScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("9_4fgrk")
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rv6dw")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="EmojiPickerBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 50)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = ExtResource("3_d32gs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
-theme_override_styles/disabled = ExtResource("3_d32gs")
-theme_override_styles/focus = ExtResource("3_d32gs")
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer/EmojiPickerBtn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_olmkv")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="AttachBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 50)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = ExtResource("3_d32gs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
-theme_override_styles/disabled = ExtResource("3_d32gs")
-theme_override_styles/focus = ExtResource("3_d32gs")
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/HBoxContainer/AttachBtn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_pdniu")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MessageInput" type="LineEdit" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MessagesScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
-theme_override_styles/normal = ExtResource("3_d32gs")
-theme_override_styles/focus = ExtResource("3_d32gs")
-theme_override_styles/read_only = ExtResource("3_d32gs")
-placeholder_text = "Type a message"
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
 
-[node name="MessageInputMultiline" type="TextEdit" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(0, 24)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/selection_color = Color(0.2, 0.462745, 0.815686, 1)
-theme_override_constants/line_spacing = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_hwhgs")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bytpr")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_3a86p")
-placeholder_text = "Type a message"
-wrap_mode = 1
-scroll_smooth = true
-scroll_fit_content_height = true
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/MessageInputMultiline"]
-visible = false
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
-grow_vertical = 2
-text = "Type a message"
-
-[node name="AudioBtn" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 50)
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = ExtResource("3_d32gs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_i6ruq")
-theme_override_styles/disabled = ExtResource("3_d32gs")
-theme_override_styles/focus = ExtResource("3_d32gs")
+theme_override_constants/separation = 32
+theme_override_styles/separator = ExtResource("3_d32gs")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/AudioBtn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_iht60")
+[node name="MessagesAreEncrypted" type="PanelContainer" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qqvln")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer/MessagesAreEncrypted"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer/MessagesAreEncrypted/HBoxContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+texture = ExtResource("10_1v77x")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer/MessagesAreEncrypted/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Message and calls are end-to-end encrypted. No one outside of this chat, can read or listen to them."
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+theme_override_styles/separator = ExtResource("3_d32gs")
+
+[node name="Messages" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Message" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer/Messages" instance=ExtResource("9_abb6j")]
+layout_mode = 2
+
+[node name="ScrollDownHelper" type="HSeparator" parent="PanelContainer/VBoxContainer/MessagesScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = ExtResource("3_d32gs")
+
+[node name="InputArea" parent="PanelContainer/VBoxContainer" instance=ExtResource("12_t3hjc")]
+layout_mode = 2

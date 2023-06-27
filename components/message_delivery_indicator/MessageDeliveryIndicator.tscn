@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbuhnupiuriej"]
+
+[ext_resource type="Texture2D" uid="uid://bqclt721uti8a" path="res://assets/icons/seen.svg" id="1_4wtrg"]
+[ext_resource type="Script" path="res://components/message_delivery_indicator/MessageDeliveryIndicator.gd" id="2_1cjow"]
+
+[node name="MessageDeliveryIndicator" type="TextureRect"]
+custom_minimum_size = Vector2(16, 10)
+texture = ExtResource("1_4wtrg")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_1cjow")

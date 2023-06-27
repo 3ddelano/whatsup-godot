@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvnio01hcmstw"]
+[gd_scene load_steps=8 format=3 uid="uid://bvnio01hcmstw"]
 
 [ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="1_g5tvj"]
 [ext_resource type="ButtonGroup" uid="uid://cfcqsqh46lth4" path="res://pages/chats/chats_list/chats_list_item/chats_list_item_btn_group.tres" id="2_1nwa5"]
 [ext_resource type="Script" path="res://pages/chats/chats_list/chats_list_item/ChatsListItem.gd" id="2_srg4r"]
 [ext_resource type="PackedScene" uid="uid://82luo3c72are" path="res://components/avatar/Avatar.tscn" id="2_viuyv"]
 [ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="3_ceo8e"]
+[ext_resource type="PackedScene" uid="uid://dbuhnupiuriej" path="res://components/message_delivery_indicator/MessageDeliveryIndicator.tscn" id="6_b44y3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcwqv"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -69,7 +70,15 @@ theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
 text = "11:00 PM"
 vertical_alignment = 2
 
-[node name="Contents" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MessageDeliveryIndicator" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("6_b44y3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 10)
+layout_mode = 2
+
+[node name="Contents" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
