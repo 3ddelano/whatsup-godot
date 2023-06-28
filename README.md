@@ -68,5 +68,9 @@ The motivation for this project was to test the limits of Godot's UI system, to 
   
   https://github.com/3ddelano/whatsup-godot/raw/main/_readme_assets/messaging_overview.mp4
 
+- #### Responsive message size
+  
+  https://github.com/3ddelano/whatsup-godot/raw/main/_readme_assets/responsive_message.mp4
+
 
 For Copyright and Attribution see `LICENSE.md` and `ATTRIBUTION.md`
