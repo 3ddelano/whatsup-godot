@@ -2,6 +2,7 @@
 class_name Message
 extends MaxSizeContainer
 
+const MAX_HORIZONTAL_SIZE = 740
 
 @onready var _content = %Content
 @onready var _time = %Time
@@ -22,6 +23,11 @@ var data: MessageData:
 		_build_ui()
 
 
+func _ready():
+	_update_max_horizontal_size()
+	get_parent().resized.connect(_update_max_horizontal_size)
+
+
 func _build_ui():
 	_content.text = data.content
 	_time.text = TimeUtils.unix_to_local_time_str(data.delivered_at)
@@ -37,11 +43,7 @@ func _build_ui():
 	else:
 		_build_receivd_message()
 
-	await get_tree().process_frame
-
-	if _content.size.x > _get_max_horizontal_size():
-		_content.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_panel_container.size_flags_horizontal = SIZE_FILL
+	_update_max_horizontal_size()
 
 
 func _build_receivd_message():
@@ -60,9 +62,17 @@ func _build_sent_by_me_message():
 	_panel_container.add_theme_stylebox_override("panel", MessageSentStyleBox)
 
 
-func _get_max_horizontal_size():
-	return 740
+func _update_max_horizontal_size():
+	await get_tree().process_frame
 
 
-func _update_max_horizontal_size(new_max_horizontal_size: int):
-	max_size.x = new_max_horizontal_size
+	var flow_size_x = min(floor(get_parent().size.x * 0.7), MAX_HORIZONTAL_SIZE)
+	print(flow_size_x)
+
+	max_size.x = flow_size_x
+
+	if _content.size.x > flow_size_x:
+		_content.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_panel_container.size_flags_horizontal = SIZE_FILL
+
+#	queue_redraw()
