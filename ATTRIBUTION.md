@@ -1,7 +1,7 @@
 SVGs
-https://heropatterns.com/
-https://heroicons.com/
-https://svgrepo.com
+- https://heropatterns.com/
+- https://heroicons.com/
+- https://svgrepo.com
 
 Avatars
-https://pravatar.cc/
+- https://pravatar.cc/
