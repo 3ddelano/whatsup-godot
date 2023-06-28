@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgtey3mf20erj"]
+[gd_scene load_steps=9 format=3 uid="uid://dgtey3mf20erj"]
 
 [ext_resource type="PackedScene" uid="uid://dpsg1g301xtea" path="res://components/title_bar/TitleBar.tscn" id="1_gvo1p"]
 [ext_resource type="Script" path="res://pages/app/App.gd" id="1_n48ql"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgc854qs0nim6" path="res://pages/chats/Chats.tscn" id="4_3tdbr"]
 [ext_resource type="Script" path="res://pages/app/PageManager.gd" id="4_cruoc"]
 [ext_resource type="PackedScene" uid="uid://bgr7d4m7ginlw" path="res://pages/calls/Calls.tscn" id="5_ptgta"]
+[ext_resource type="PackedScene" uid="uid://bsd7lt7ioq2cw" path="res://pages/status/Status.tscn" id="7_66t1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwhtd"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -52,6 +53,11 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Calls" parent="VBoxContainer/HBoxContainer/PageManager" instance=ExtResource("5_ptgta")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Status" parent="VBoxContainer/HBoxContainer/PageManager" instance=ExtResource("7_66t1u")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

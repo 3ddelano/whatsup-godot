@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dysw44anrljed"]
+[gd_scene load_steps=11 format=3 uid="uid://dysw44anrljed"]
 
 [ext_resource type="StyleBox" uid="uid://bjoa0j5wb5g66" path="res://assets/styles/empty.tres" id="1_u6eje"]
+[ext_resource type="Script" path="res://pages/calls/calls_list/CallsList.gd" id="1_wvf4l"]
 [ext_resource type="Texture2D" uid="uid://dhe40skum8qm8" path="res://assets/icons/create_call_link.svg" id="2_jdw8f"]
 [ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="3_00bdd"]
 [ext_resource type="PackedScene" uid="uid://db677dypua7p2" path="res://pages/calls/calls_list/calls_list_item/CallsListItem.tscn" id="4_a44su"]
@@ -53,6 +54,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_exeyk")
 horizontal_scroll_mode = 0
+script = ExtResource("1_wvf4l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -129,5 +131,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.662745, 0.662745, 1)
 text = "Share a link for your WhatsupGodot call"
 
-[node name="CallsListItem" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_a44su")]
+[node name="CallsListItems" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CallsListItem" parent="MarginContainer/VBoxContainer/CallsListItems" instance=ExtResource("4_a44su")]
 layout_mode = 2

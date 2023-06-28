@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgr7d4m7ginlw"]
+[gd_scene load_steps=7 format=3 uid="uid://bsd7lt7ioq2cw"]
 
-[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="1_3xa54"]
-[ext_resource type="Script" path="res://pages/calls/Calls.gd" id="1_f38el"]
-[ext_resource type="PackedScene" uid="uid://dysw44anrljed" path="res://pages/calls/calls_list/CallsList.tscn" id="3_0yguc"]
-[ext_resource type="PackedScene" uid="uid://bqc2wa8ilqwt0" path="res://components/search_bar/SearchBar.tscn" id="5_8grnv"]
-[ext_resource type="PackedScene" uid="uid://bmyq1rgg3lb12" path="res://pages/calls/CallsLanding.tscn" id="5_s3l8s"]
+[ext_resource type="Script" path="res://pages/status/Status.gd" id="1_2kg4s"]
+[ext_resource type="FontFile" uid="uid://chn0vrpw0i4y2" path="res://assets/fonts/Roboto/Roboto-Bold.ttf" id="2_41fjr"]
+[ext_resource type="PackedScene" uid="uid://c76ijdv05evhj" path="res://pages/status/status_list/StatusList.tscn" id="3_1oixb"]
+[ext_resource type="PackedScene" uid="uid://hy0jntm0qm2l" path="res://pages/status/StatusLanding.tscn" id="4_v7j7v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n5cu"]
 content_margin_left = 16.0
@@ -22,14 +21,14 @@ bg_color = Color(0.152941, 0.152941, 0.152941, 1)
 border_width_top = 1
 border_color = Color(0.109804, 0.109804, 0.109804, 1)
 
-[node name="Calls" type="HBoxContainer"]
+[node name="Status" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-script = ExtResource("1_f38el")
+script = ExtResource("1_2kg4s")
 
 [node name="Side" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(450, 0)
@@ -45,26 +44,17 @@ layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Side/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Header" type="HBoxContainer" parent="Side/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="Side/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Side/VBoxContainer/MarginContainer/VBoxContainer/Header"]
+[node name="Label" type="Label" parent="Side/VBoxContainer/MarginContainer/Header"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_3xa54")
+theme_override_fonts/font = ExtResource("2_41fjr")
 theme_override_font_sizes/font_size = 24
-text = "Calls"
+text = "Status"
 
-[node name="Search" parent="Side/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_8grnv")]
-unique_name_in_owner = true
-layout_mode = 2
-placeholder_text = "Search or start a new call"
-
-[node name="CallsList" parent="Side/VBoxContainer" instance=ExtResource("3_0yguc")]
+[node name="StatusList" parent="Side/VBoxContainer" instance=ExtResource("3_1oixb")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -73,5 +63,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_enjs6")
 
-[node name="CallsLanding" parent="MainContent" instance=ExtResource("5_s3l8s")]
+[node name="Landing" parent="MainContent" instance=ExtResource("4_v7j7v")]
+unique_name_in_owner = true
 layout_mode = 2

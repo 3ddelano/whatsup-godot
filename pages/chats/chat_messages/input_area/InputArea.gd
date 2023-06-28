@@ -17,7 +17,7 @@ func _sanitize_message_content(content: String):
 	return content.strip_edges()
 
 
-func _on_message_input_text_changed(new_text: String):
+func _on_message_input_text_changed(_new_text: String):
 	_update_send_button_visibility()
 
 

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://c76ijdv05evhj"]
+
+[ext_resource type="Theme" uid="uid://c2ke1g0gq6u4r" path="res://assets/styles/scroll_bar.tres" id="1_7cmwp"]
+[ext_resource type="Script" path="res://pages/status/status_list/StatusList.gd" id="2_7phex"]
+[ext_resource type="PackedScene" uid="uid://bgiqid5va33hs" path="res://pages/status/status_list/status_list_item/StatusListItem.tscn" id="3_y276d"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3be2q"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_e2p0o"]
+
+[node name="StatusList" type="ScrollContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 450.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_7cmwp")
+horizontal_scroll_mode = 0
+script = ExtResource("2_7phex")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="MyStatus" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_y276d")]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = SubResource("ButtonGroup_3be2q")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.619608, 0.619608, 0.619608, 1)
+theme_override_font_sizes/font_size = 18
+text = "Recent updates"
+
+[node name="StatusListItems" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusListItem" parent="MarginContainer/VBoxContainer/StatusListItems" instance=ExtResource("3_y276d")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_e2p0o")

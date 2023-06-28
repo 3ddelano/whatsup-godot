@@ -1,5 +1,9 @@
 extends Node
 
+const MIN_TO_S = 60
+const HR_TO_S = 3600
+
+var my_avatar = preload("res://assets/avatars/my_avatar.jpeg")
 var avatars = {
 	female1 = preload("res://assets/avatars/female1.jpeg"),
 	female2 = preload("res://assets/avatars/female2.jpeg"),
@@ -113,16 +117,28 @@ var conversations = [
 func seed_app_data() -> AppData:
 	var app_data = AppData.new()
 
+	app_data.my_contact = seed_my_contact()
 	app_data.contacts = seed_contacts()
 	app_data.chats_data = seed_chats_data()
 
 	return app_data
 
 
+func seed_my_contact() -> ContactData:
+	var contact_data = ContactData.new("Jane Smith", "+91 98123456789", my_avatar, "Just a chill gal!")
+	return contact_data
+
+
 func seed_contacts() -> Dictionary:
 	var contacts_dict = {}
 	for i in range(len(contacts)):
 		var contact: ContactData = contacts[i]
+		@warning_ignore("narrowing_conversion")
+		contact.status_updated_at = Time.get_unix_time_from_system() - (randi() % (8 * HR_TO_S))
+		@warning_ignore("narrowing_conversion")
+		contact.last_call_at = Time.get_unix_time_from_system() - (randi() % (8 * HR_TO_S))
+		var call_statuses = ContactData.CallStatus.values()
+		contact.last_call_status = call_statuses[randi() % len(call_statuses)]
 		contacts_dict[contact.phone] = contact
 
 	return contacts_dict
@@ -148,11 +164,9 @@ func seed_chats_data() -> ChatsData:
 
 	return chats_data
 
+
 func seed_chat_messages(conversation: Array) -> Array[MessageData]:
 	var messages: Array[MessageData] = []
-
-	var MIN_TO_S = 60
-	var HR_TO_S = 3600
 
 	var last_msg_delivered_at = Time.get_unix_time_from_system() - (randi() % (5 * HR_TO_S))
 	for i in range(len(conversation)):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://82luo3c72are"]
 
 [ext_resource type="Shader" path="res://assets/shaders/circle.gdshader" id="1_e2ved"]
-[ext_resource type="Texture2D" uid="uid://c87p5oxmyu661" path="res://assets/icons/profile_avatar.jpeg" id="2_jx55o"]
+[ext_resource type="Texture2D" uid="uid://c87p5oxmyu661" path="res://assets/avatars/my_avatar.jpeg" id="2_jx55o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4elsf"]
 shader = ExtResource("1_e2ved")

@@ -6,7 +6,7 @@ extends HBoxContainer
 
 
 @onready var chat_messages = %ChatMessages
-@onready var landing = %Landing
+@onready var landing = %ChatsLanding
 
 
 func _ready() -> void:

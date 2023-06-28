@@ -39,7 +39,7 @@ func _build_ui():
 
 	await get_tree().process_frame
 
-	if _content.size.x > 740:
+	if _content.size.x > _get_max_horizontal_size():
 		_content.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_panel_container.size_flags_horizontal = SIZE_FILL
 
@@ -58,3 +58,11 @@ func _build_sent_by_me_message():
 	_panel_container.size_flags_horizontal = SIZE_SHRINK_END
 
 	_panel_container.add_theme_stylebox_override("panel", MessageSentStyleBox)
+
+
+func _get_max_horizontal_size():
+	return 740
+
+
+func _update_max_horizontal_size(new_max_horizontal_size: int):
+	max_size.x = new_max_horizontal_size

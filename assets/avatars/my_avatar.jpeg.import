@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1k1o0ubs7cwl"
-path="res://.godot/imported/missed_call.svg-d3dcbeb680006f1e1a59a33eaa673418.ctex"
+uid="uid://c87p5oxmyu661"
+path="res://.godot/imported/my_avatar.jpeg-649a67c50d472bd397625eff54a9e8cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/missed_call.svg"
-dest_files=["res://.godot/imported/missed_call.svg-d3dcbeb680006f1e1a59a33eaa673418.ctex"]
+source_file="res://assets/avatars/my_avatar.jpeg"
+dest_files=["res://.godot/imported/my_avatar.jpeg-649a67c50d472bd397625eff54a9e8cd.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

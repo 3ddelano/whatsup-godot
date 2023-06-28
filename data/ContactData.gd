@@ -1,6 +1,8 @@
 class_name ContactData
 extends Resource
 
+enum CallStatus {Sent, Received, MissedReceived}
+
 
 var name: String:
 	set(p_name):
@@ -25,6 +27,21 @@ var about: String = "Hey there! I'm using WhatsGodot.":
 var last_seen_at: int:
 	set(p_last_seen_at):
 		last_seen_at = p_last_seen_at
+		emit_changed()
+
+var status_updated_at: int:
+	set(p_status_updated_at):
+		status_updated_at = p_status_updated_at
+		emit_changed()
+
+var last_call_at: int:
+	set(p_last_call_at):
+		last_call_at = p_last_call_at
+		emit_changed()
+
+var last_call_status: CallStatus:
+	set(p_last_call_status):
+		last_call_status = p_last_call_status
 		emit_changed()
 
 

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxapu8l2n5xr" path="res://assets/icons/setting.svg" id="7_mmnia"]
 [ext_resource type="PackedScene" uid="uid://cii7bqbvywolw" path="res://components/selected_button_indicator/SelectedButtonIndicator.tscn" id="7_w6f01"]
 [ext_resource type="Shader" path="res://assets/shaders/circle.gdshader" id="8_45coo"]
-[ext_resource type="Texture2D" uid="uid://c87p5oxmyu661" path="res://assets/icons/profile_avatar.jpeg" id="9_5vbmx"]
+[ext_resource type="Texture2D" uid="uid://c87p5oxmyu661" path="res://assets/avatars/my_avatar.jpeg" id="9_3pqj5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d6qc"]
 content_margin_left = 6.0
@@ -156,16 +156,25 @@ theme_override_styles/disabled = ExtResource("1_d4ds0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3swb2")
 keep_pressed_outside = true
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ProfileButton"]
+[node name="MyAvatar" type="TextureRect" parent="VBoxContainer/ProfileButton"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_4w73n")
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_5vbmx")
-stretch_mode = 3
+texture = ExtResource("9_3pqj5")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SelectedButtonIndicator" parent="." instance=ExtResource("7_w6f01")]
 unique_name_in_owner = true

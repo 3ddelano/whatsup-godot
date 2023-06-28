@@ -12,6 +12,7 @@ extends Button
 var data: ContactData:
 	set(p_data):
 		data = p_data
+		if not data.changed.is_connected(_build_ui): data.changed.connect(_build_ui)
 		_build_ui()
 
 
