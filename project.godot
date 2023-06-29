@@ -29,6 +29,7 @@ Seed="*res://autoloads/Seed.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/dpi/allow_hidpi=false
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]

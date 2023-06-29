@@ -14,7 +14,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3nhoh"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_7dgsj"]
 
 [node name="ChatsList" type="ScrollContainer"]
 anchors_preset = 9
@@ -77,4 +77,4 @@ layout_mode = 2
 
 [node name="ChatListItem" parent="MarginContainer/VBoxContainer/ChatsListItems" instance=ExtResource("4_44422")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_3nhoh")
+button_group = SubResource("ButtonGroup_7dgsj")

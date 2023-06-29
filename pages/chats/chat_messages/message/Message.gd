@@ -67,12 +67,9 @@ func _update_max_horizontal_size():
 
 
 	var flow_size_x = min(floor(get_parent().size.x * 0.7), MAX_HORIZONTAL_SIZE)
-	print(flow_size_x)
 
 	max_size.x = flow_size_x
 
 	if _content.size.x > flow_size_x:
 		_content.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_panel_container.size_flags_horizontal = SIZE_FILL
-
-#	queue_redraw()
